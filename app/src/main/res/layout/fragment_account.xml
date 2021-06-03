@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".fragment.account.AccountFragment">
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/profile_title"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/heading_1"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnChangeProfile"
+        style="@style/Button_Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tvTitle"
+        android:drawableRight="@drawable/ic_baseline_edit_24"
+        android:text="Update Profile" />
+
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        style="@style/Button_Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnChangeProfile"
+        android:layout_marginTop="10dp"
+        android:drawableRight="@drawable/ic_baseline_lock_24"
+        android:text="Update Password" />
+
+    <Button
+        android:id="@+id/btnAbout"
+        style="@style/Button_Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnChangePassword"
+        android:layout_marginTop="10dp"
+        android:text="About Developer"
+        android:drawableRight="@drawable/ic_outline_info_24" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Logout" />
+</RelativeLayout>

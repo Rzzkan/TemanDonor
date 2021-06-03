@@ -4,46 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey"
-        android:orientation="vertical">
+        android:layout_above="@id/lytNavigation">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scroll_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:scrollingCache="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
-
-                <FrameLayout
-                    android:id="@+id/container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/lytNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -56,7 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:color/white"
+            android:background="@color/grey"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -67,18 +37,20 @@
                 android:padding="15dp">
 
                 <ImageButton
+                    android:id="@+id/btnHome"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_home"
-                    app:tint="@color/red_apple" />
+                    app:tint="@color/white" />
 
                 <ImageButton
+                    android:id="@+id/btnVolunteer"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_people"
-                    app:tint="@color/red_apple" />
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
@@ -94,18 +66,20 @@
                 android:padding="15dp">
 
                 <ImageButton
+                    android:id="@+id/btnEvent"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_clock"
-                    app:tint="@color/red_apple" />
+                    app:tint="@color/white" />
 
                 <ImageButton
+                    android:id="@+id/btnAccount"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_account"
-                    app:tint="@color/red_apple" />
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
@@ -114,16 +88,17 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="15dp"
-        android:clickable="true"
-        app:tint="@color/white"
         android:backgroundTint="@color/red_apple"
+        android:clickable="true"
         app:elevation="2dp"
         app:fabSize="normal"
-        app:srcCompat="@drawable/ic_search" />
+        app:srcCompat="@drawable/ic_search"
+        app:tint="@color/white" />
 
 </RelativeLayout>
