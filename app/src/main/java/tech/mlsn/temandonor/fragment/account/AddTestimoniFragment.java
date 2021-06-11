@@ -12,6 +12,10 @@ import android.widget.Button;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,7 +73,7 @@ public class AddTestimoniFragment extends Fragment {
         Call<BaseResponse> postUpdateUser= apiInterface.addComment(
                spManager.getSpName(),
                etTesti.getText().toString(),
-               ""
+               getDate()
         );
 
         postUpdateUser.enqueue(new Callback<BaseResponse>() {
@@ -97,5 +101,12 @@ public class AddTestimoniFragment extends Fragment {
         }
 
         return valid;
+    }
+
+    private String getDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date getCurrentDate = Calendar.getInstance().getTime();
+        String currentDate = sdf.format(getCurrentDate);
+        return currentDate;
     }
 }

@@ -12,7 +12,7 @@
         android:id="@+id/ivLogo"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
         app:srcCompat="@drawable/logo" />
 
     <Button

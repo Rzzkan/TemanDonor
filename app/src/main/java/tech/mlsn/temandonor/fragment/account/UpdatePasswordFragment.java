@@ -63,7 +63,7 @@ public class UpdatePasswordFragment extends Fragment {
                 if (!etOldPassword.getText().toString().isEmpty()&&!etNewPassword.getText().toString().isEmpty()){
                    updatePassword();
                 }else {
-                    snackbar.snackInfo("Required");
+                    snackbar.snackInfo("Diperlukan");
                 }
             }
         });

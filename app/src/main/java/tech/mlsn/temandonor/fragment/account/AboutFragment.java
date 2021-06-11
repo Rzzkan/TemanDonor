@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import tech.mlsn.temandonor.R;
 
 public class AboutFragment extends Fragment {
-    ImageView ivRifqi, ivBowo;
+    ImageView ivRifqi, ivBowo, ivLogo;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,10 +25,12 @@ public class AboutFragment extends Fragment {
     }
 
     private void initialization(View view){
+        ivLogo = view.findViewById(R.id.ivLogo);
         ivRifqi = view.findViewById(R.id.ivRifqi);
         ivBowo = view.findViewById(R.id.ivBowo);
 
-        Glide.with(getActivity()).load("http://temandonor.rzzkan.com/public/iki/img/blood/rifki.jpg").centerCrop().into(ivRifqi);
-        Glide.with(getActivity()).load("http://temandonor.rzzkan.com/public/iki/img/blood/bowo.jpeg").centerCrop().into(ivBowo);
+        Glide.with(getContext()).load(R.drawable.logo).into(ivLogo);
+        Glide.with(getContext()).load("http://temandonor.rzzkan.com/public/iki/img/blood/rifki.jpg").centerCrop().into(ivRifqi);
+        Glide.with(getContext()).load("http://temandonor.rzzkan.com/public/iki/img/blood/bowo.jpeg").centerCrop().into(ivBowo);
     }
 }

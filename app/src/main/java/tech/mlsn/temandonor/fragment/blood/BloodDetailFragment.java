@@ -1,11 +1,15 @@
 package tech.mlsn.temandonor.fragment.blood;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -83,7 +87,7 @@ public class BloodDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(phone));
+                intent.setData(Uri.parse("tel:"+phone));
                 startActivity(intent);
             }
         });
@@ -99,7 +103,7 @@ public class BloodDetailFragment extends Fragment {
                     sendIntent.putExtra(Intent.EXTRA_TEXT,"");
                     sendIntent.putExtra("jid", wa +"@s.whatsapp.net");
                     sendIntent.setPackage("com.whatsapp");
-                    startActivity(sendIntent);
+                    getActivity().startActivity(sendIntent);
                 }
                 catch(Exception e)
                 {

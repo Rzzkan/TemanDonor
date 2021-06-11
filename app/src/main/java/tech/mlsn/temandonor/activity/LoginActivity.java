@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.karan.churi.PermissionManager.PermissionManager;
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText etUsername, etPassword;
     Button btnLogin;
     TextView tvRegister;
+    ImageView ivLogo;
 
     SPManager spManager;
     SnackbarHandler snackbar;
@@ -55,6 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
+        ivLogo = findViewById(R.id.ivLogo);
+
+        Glide.with(this).load(R.drawable.logo).fitCenter().into(ivLogo);
 
         permissionManager = new PermissionManager() {};
         permissionManager.checkAndRequestPermissions(this);
