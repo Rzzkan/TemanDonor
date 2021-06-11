@@ -81,8 +81,8 @@ public class AccountFragment extends Fragment {
     public void logoutDialog(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle    ("Logout");
-        builder.setMessage("Are you sure to Logout ?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setMessage("Apakah yakin ingin keluar ?");
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 spManager.saveSPBoolean(spManager.SP_IS_SIGNED, false);
@@ -92,7 +92,7 @@ public class AccountFragment extends Fragment {
                 getActivity().finish();
             }
         });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
