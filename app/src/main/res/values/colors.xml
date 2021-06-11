@@ -24,6 +24,7 @@
 
     <color name="text">@color/grey</color>
     <color name="trans_black">#B3000000</color>
+    <color name="white_smoke">#F5F5F5</color>
 
 
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
         public TextView name, blood, city;
-        public View lyt_parent;
+        public MaterialRippleLayout lyt_parent;
 
         public OriginalViewHolder(View v) {
             super(v);

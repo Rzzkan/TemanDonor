@@ -67,7 +67,6 @@ public class BloodFragment extends Fragment {
         spinnerListener();
         radioListener();
         tabListener();
-        itemClickListener();
         return view;
     }
 
@@ -285,6 +284,7 @@ public class BloodFragment extends Fragment {
         adapter = new VolunteersAdapter(getContext(), listVolunteerFiltered);
         adapter.notifyDataSetChanged();
         rvBlood.setAdapter(adapter);
+        itemClickListener();
     }
 
     private void itemClickListener(){

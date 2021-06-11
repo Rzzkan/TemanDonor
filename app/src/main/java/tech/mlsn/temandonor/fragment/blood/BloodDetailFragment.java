@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -87,17 +88,23 @@ public class BloodDetailFragment extends Fragment {
             }
         });
 
-        btnCall.setOnClickListener(new View.OnClickListener() {
+        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent =new Intent("android.intent.action.MAIN");
-                sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.setType("text/plain");
-                sendIntent.putExtra(Intent.EXTRA_TEXT,"");
-                sendIntent.putExtra("jid", wa +"@s.whatsapp.net");
-                sendIntent.setPackage("com.whatsapp");
-                startActivity(sendIntent);
+                try{
+                    Intent sendIntent =new Intent("android.intent.action.MAIN");
+                    sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.setType("text/plain");
+                    sendIntent.putExtra(Intent.EXTRA_TEXT,"");
+                    sendIntent.putExtra("jid", wa +"@s.whatsapp.net");
+                    sendIntent.setPackage("com.whatsapp");
+                    startActivity(sendIntent);
+                }
+                catch(Exception e)
+                {
+                    Toast.makeText(getContext(),"Whatsapp Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -122,7 +129,7 @@ public class BloodDetailFragment extends Fragment {
 
                     if (Integer.valueOf(data.getTotalDonor())>0){
                         cardEver.setVisibility(View.VISIBLE);
-                        tvEver.setText("Pernah "+ data.getTotalDonor()+" donor, terakhir kali pada "+ Tools.dateParser(data.getLastDonor()));
+                        tvEver.setText("Pernah "+ data.getTotalDonor()+" kali donor, terakhir kali pada "+ Tools.dateParser(data.getLastDonor()));
                     }
 
                     if (data.getStatusCovid().equalsIgnoreCase("ya")){
