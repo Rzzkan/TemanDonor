@@ -50,5 +50,10 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:3.2.0'         // date & time picker
 
     implementation 'com.balysv:material-ripple:1.0.2'                   // Ripple Effect
-    implementation 'com.mikhaellopez:circularimageview:3.2.0'          // circle image view
+
+    implementation 'com.github.smarteist:autoimageslider:1.4.0' // image slider
+
+    implementation 'org.sufficientlysecure:html-textview:4.0' //htmlview
+
+    implementation 'com.github.chivorns.androidx:smartmaterialspinner:1.2.1' // Searchable Spinner
 }

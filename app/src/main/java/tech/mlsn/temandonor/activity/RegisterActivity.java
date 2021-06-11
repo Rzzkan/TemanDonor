@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.body().getSuccess()==1) {
-                    snackbar.snackSuccess("Register Success");
+                    snackbar.snackSuccess("Berhasil");
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }, 1000);
                 } else{
-                    snackbar.snackError("Register Failed");
+                    snackbar.snackError("Gagal");
                 }
             }
             @Override
@@ -102,30 +102,30 @@ public class RegisterActivity extends AppCompatActivity {
     private Boolean validate(){
         Boolean valid = true;
         if (etName.getText().toString().isEmpty()){
-            lytName.setError("Name Required");
+            lytName.setError("Nama Harus Diisi");
             valid = false;
         }
 
         if (etPassword.getText().toString().isEmpty()){
-            lytPassword.setError("Password Required");
+            lytPassword.setError("Sandi Harus Diisi");
             valid = false;
         }
         if (etConfirmPassword.getText().toString().isEmpty()){
-            lytConfirmPassword.setError("Password Required");
+            lytConfirmPassword.setError("Sandi Harus Diisi");
             valid = false;
         }
         if (etEmail.getText().toString().isEmpty()){
-            lytEmail.setError("Email Required");
+            lytEmail.setError("Email Harus Diisi");
             valid = false;
         }
 
         if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())){
-            lytConfirmPassword.setError("Not Match");
+            lytConfirmPassword.setError("Tidak Sesuai");
             valid = false;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.getText().toString()).matches()){
-            lytEmail.setError("Email Not Valid");
+            lytEmail.setError("Email Tidak Valid");
             valid = false;
         }
 

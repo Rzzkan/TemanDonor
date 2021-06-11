@@ -7,6 +7,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import tech.mlsn.temandonor.R;
 
 /**
@@ -28,5 +32,19 @@ public class Tools {
         manager.popBackStackImmediate(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
         ft.replace(R.id.main_content, replaceFragment);
         ft.commitAllowingStateLoss();
+    }
+
+    public static String dateParser(String currentDate){
+        SimpleDateFormat currentFormat,newFormat;
+        String newDate = "";
+        currentFormat = new SimpleDateFormat("yyyy-MM-dd");
+        newFormat = new SimpleDateFormat("EEEE, d MMMM yyyy");
+        try {
+            Date getDate = currentFormat.parse(currentDate);
+            newDate = newFormat.format(getDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
     }
 }

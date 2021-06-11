@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,7 +28,8 @@ import tech.mlsn.temandonor.tools.SnackbarHandler;
 public class LoginActivity extends AppCompatActivity {
     TextInputLayout lytUsername, lytPassword;
     TextInputEditText etUsername, etPassword;
-    Button btnLogin, btnRegister;
+    Button btnLogin;
+    TextView tvRegister;
 
     SPManager spManager;
     SnackbarHandler snackbar;
@@ -52,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        tvRegister = findViewById(R.id.tvRegister);
 
         permissionManager = new PermissionManager() {};
         permissionManager.checkAndRequestPermissions(this);
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
@@ -96,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     spManager.saveSPString(spManager.SP_NAME, currentUser.getName());
                     spManager.saveSPString(spManager.SP_EMAIL, currentUser.getEmail());
                     spManager.saveSPBoolean(spManager.SP_IS_SIGNED, true);
-                    snackbar.snackSuccess("Login Success");
+                    snackbar.snackSuccess("Berhasil");
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -106,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }, 1000);
                 } else{
-                    snackbar.snackError("Wrong Password");
+                    snackbar.snackError("Gagal");
                 }
             }
             @Override

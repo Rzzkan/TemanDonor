@@ -78,10 +78,10 @@ public class UpdateAccountFragment extends Fragment {
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.body().getSuccess()==1) {
                     spManager.saveSPString(SPManager.SP_NAME,etName.getText().toString());
-                    snackbar.snackSuccess("Success");
+                    snackbar.snackSuccess("Berhasil");
                     Tools.removeAllFragment(getActivity(), new AccountFragment(),"profile");
                 } else{
-                    snackbar.snackError("Failed");
+                    snackbar.snackError("Gagal");
                 }
             }
             @Override
@@ -94,7 +94,7 @@ public class UpdateAccountFragment extends Fragment {
     private Boolean validate(){
         Boolean valid = true;
         if (etName.getText().toString().isEmpty()){
-            lytName.setError("Name Required");
+            lytName.setError("Harus diisi");
             valid = false;
         }
 

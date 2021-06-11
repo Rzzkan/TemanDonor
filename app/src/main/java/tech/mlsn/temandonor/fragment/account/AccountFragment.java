@@ -18,7 +18,7 @@ import tech.mlsn.temandonor.tools.SPManager;
 import tech.mlsn.temandonor.tools.Tools;
 
 public class AccountFragment extends Fragment {
-    Button btnUpdateProfile, btnUpdatePassword, btnAbout, btnLogout;
+    Button btnUpdateProfile, btnUpdatePassword, btnAbout, btnTesti, btnLogout;
     SPManager spManager;
 
 
@@ -37,6 +37,7 @@ public class AccountFragment extends Fragment {
         btnUpdatePassword = view.findViewById(R.id.btnChangePassword);
         btnAbout = view.findViewById(R.id.btnAbout);
         btnLogout = view.findViewById(R.id.btnLogout);
+        btnTesti = view.findViewById(R.id.btnTestimoni);
 
         spManager = new SPManager(getContext());
     }
@@ -66,6 +67,13 @@ public class AccountFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {logoutDialog();
+            }
+        });
+
+        btnTesti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tools.addFragment(getActivity(), new AddTestimoniFragment(), null,"add-testi");
             }
         });
     }

@@ -7,34 +7,6 @@
     android:padding="15dp"
     tools:context=".fragment.account.UpdateAccountFragment">
 
-    <LinearLayout
-        android:id="@+id/lytPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvTitle"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_baseline_done_24"
-            app:civ_border="false"
-            app:civ_shadow="true"
-            app:civ_shadow_radius="0" />
-
-        <Button
-            android:id="@+id/btnChangePhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="Change Photo" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -52,13 +24,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Save" />
+        android:text="Simpan" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnSave"
-        android:layout_below="@id/lytPhoto">
+        android:layout_below="@id/tvTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,7 +47,7 @@
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="Nama"
                     android:imeOptions="actionNext"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>

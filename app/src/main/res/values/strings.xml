@@ -1,21 +1,24 @@
 <resources>
     <string name="app_name">Teman Donor</string>
-    <string name="register">Register</string>
-    <string name="register_title">Register</string>
+    <string name="register">Daftar</string>
+    <string name="register_title">Daftar</string>
     <string name="login">Login</string>
-    <string name="profile_title">Profile</string>
-    <string name="about_title">About</string>
-    <string name="update_pw_title">Update Password</string>
-    <string name="update_account_title">Update Account</string>
+    <string name="profile_title">Profil</string>
+    <string name="about_title">Tentang</string>
+    <string name="update_pw_title">Ubah Sandi</string>
+    <string name="update_account_title">Ubah Akun</string>
+    <string name="news">Berita</string>
+    <string name="testi">Testimoni</string>
+    <string name="event">Acara</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="about_apps">Teman donor merupakan sebuah aplikasi yang dibuat untuk memenuhi tugas akhir kami di Politeknik Negeri Jakarta. Dimulai dari melihat postingan teman atau keluarga di status media sosial yang sedang mencari pendonor untuk diambil darahnya dikarenakan ada hal yang tidak dapat diduga seperti stok kantong darah di Rumah sakit atau PMI sedang kosong, sedangkan pasien butuh transfusi darah secepatnya. Oleh karena itu kami ingin membuat aplikasi Teman Donor yang mempunyai tujuan untuk membantu kelaurga/teman pasien mencari pendonor secara cepat dan sesuai dengan kriteria darah yang sedang dicari.
-        <br/>
-        <br/>
+        <br />
+        <br />
         Selain website Teman Donor juga membuat versi Mobile untuk android, yang fitur dan kegunannya sama dengan yang diwebsite. Memberikan opsi lain jika user lebih suka menggunakan versi mobilenya dibanding harus membuka website terlebih dahulu. Pada mobile user juga dapat melihat berita berita terbaru, event donor darah juga yang sama dengan versi website. Aplikasi Teman donor akan berjalan lancar ketika banyak para relawan donor darah yang mendaftar pada aplikasi ini, semakin banyak yang daftar maka akan ssemakin membantu para pencari donor untuk menemukan pendonor yang sesuai dengan kriteria pasien yang dibutuhkan. Jadi jangan ragu untuk daftar ya!
    </string>
-    
+
     <string name="rifqi">Rifqi Naufal Huwaidi</string>
     <string name="rifqi_desc">Hai perkenalkan nama saya Rifqi Naufal Huwaidi biasa dipanggil Rifqi mahasiswa tingkat akhir di Politeknik Negeri Jakarta. Project aplikasi Teman Donor ini merupakan hasil dari pemikiran konsep kami berdua yang akan dikembangkan bersama. Disini saya berfokus pada website dan partner saya berfokus dalam pembuatan versi Mobile. Jika ditanya kenapa membuat aplikasi ini? jawbannya adalah saya ingin membantu orang-orang yang sedang mecari pendonor ketika stok darah habis, karena sepengalaman saya agak sulit mencari orang yang cocok dengan kriteria dibutuhkan selain keluarga sendiri. Dan harapannya aplikasi ini dapat bermanfaat untuk orang-orang yang sedang membutuhkan pendonor.</string>
     <string name="bowo">Prabowo Chandra</string>

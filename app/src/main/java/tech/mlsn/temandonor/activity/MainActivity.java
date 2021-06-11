@@ -9,9 +9,9 @@ import android.widget.ImageButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import tech.mlsn.temandonor.R;
-import tech.mlsn.temandonor.fragment.BloodFragment;
+import tech.mlsn.temandonor.fragment.blood.BloodFragment;
 import tech.mlsn.temandonor.fragment.EventFragment;
-import tech.mlsn.temandonor.fragment.HomeFragment;
+import tech.mlsn.temandonor.fragment.home.HomeFragment;
 import tech.mlsn.temandonor.fragment.VolunteerFragment;
 import tech.mlsn.temandonor.fragment.account.AccountFragment;
 import tech.mlsn.temandonor.tools.Tools;
