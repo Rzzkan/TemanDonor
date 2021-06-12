@@ -21,8 +21,7 @@
             <ImageView
                 android:id="@+id/ivLogo"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/logo" />
+                android:layout_height="100dp" />
 
             <TextView
                 android:id="@+id/app_desc"

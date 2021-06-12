@@ -67,7 +67,7 @@ public class EventFragment extends Fragment {
             @Override
             public void onResponse(Call<EventsResponse> call, Response<EventsResponse> response) {
                 if (response.body().getSuccess()==1) {
-                    snackbar.snackSuccess("Success");
+//                    snackbar.snackSuccess("Success");
                     for (int i=0; i<response.body().getData().size();i++){
                         EventDataResponse data = response.body().getData().get(i);
                         listEvent.add(new EventDataResponse(
@@ -81,7 +81,7 @@ public class EventFragment extends Fragment {
                     }
                     adapter.notifyDataSetChanged();
                 } else{
-                    snackbar.snackError("Failed");
+//                    snackbar.snackError("Failed");
                 }
             }
             @Override
