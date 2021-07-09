@@ -23,6 +23,9 @@ public class VolunteersDataResponse {
     @SerializedName("city")
     @Expose
     private String city;
+    @SerializedName("distance")
+    @Expose
+    private Double distance;
     @SerializedName("gender")
     @Expose
     private String gender;
@@ -54,12 +57,13 @@ public class VolunteersDataResponse {
     @Expose
     private String userId;
 
-    public VolunteersDataResponse(String id, String name, String blood, String rhesus, String city, String gender, String age, String weight, String phone, String totalDonor, String lastDonor, String statusCovid, String symptomps, String recoveryDate, String userId) {
+    public VolunteersDataResponse(String id, String name, String blood, String rhesus, String city, Double distance, String gender, String age, String weight, String phone, String totalDonor, String lastDonor, String statusCovid, String symptomps, String recoveryDate, String userId) {
         this.id = id;
         this.name = name;
         this.blood = blood;
         this.rhesus = rhesus;
         this.city = city;
+        this.distance = distance;
         this.gender = gender;
         this.age = age;
         this.weight = weight;
@@ -110,6 +114,14 @@ public class VolunteersDataResponse {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
     public String getGender() {

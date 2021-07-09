@@ -58,8 +58,12 @@ public interface ApiInterface {
     @GET("allComments.php")
     Call<CommentsResponse> allComments();
 
-    @GET("allVolunteers.php")
-    Call<VolunteersResponse> allVolunteers();
+    @FormUrlEncoded
+    @POST("allVolunteers.php")
+    Call<VolunteersResponse> allVolunteers(
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude
+    );
 
     @GET("allEvents.php")
     Call<EventsResponse> allEvents();
@@ -82,6 +86,8 @@ public interface ApiInterface {
             @Field("bloodtype_id") String bloodtype_id,
             @Field("rhesus") String rhesus,
             @Field("city_id") String city_id,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude,
             @Field("gender") String gender,
             @Field("age") String age,
             @Field("weight") String weight,

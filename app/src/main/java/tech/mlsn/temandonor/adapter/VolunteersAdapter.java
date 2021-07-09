@@ -43,7 +43,7 @@ public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, blood, city;
+        public TextView name, blood, city, distance;
         public MaterialRippleLayout lyt_parent;
 
         public OriginalViewHolder(View v) {
@@ -51,6 +51,7 @@ public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             name =  v.findViewById(R.id.tvName);
             blood = v.findViewById(R.id.tvBlood);
             city = v.findViewById(R.id.tvCity);
+            distance = v.findViewById(R.id.tvDistance);
             lyt_parent = v.findViewById(R.id.lyt_parent);
         }
     }
@@ -72,6 +73,7 @@ public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             view.name.setText(x.getName());
             view.blood.setText(x.getBlood());
             view.city.setText(x.getCity());
+            view.distance.setText(x.getDistance().toString()+" Km");
 
             view.lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override

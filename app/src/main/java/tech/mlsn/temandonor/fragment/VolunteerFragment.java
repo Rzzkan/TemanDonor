@@ -1,10 +1,20 @@
 package tech.mlsn.temandonor.fragment;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,10 +63,14 @@ public class VolunteerFragment extends Fragment {
     String idCity="", gender="", blood="", rhesus="", symptoms="";
     String covid="Tidak", ever="Tidak";
     String total="0";
+    Double lat=0.0, lng=0.0;
 
     SPManager spManager;
     SnackbarHandler snackbar;
     ApiInterface apiInterface;
+
+    LocationManager locationManager;
+    private static final int REQUEST_LOCATION = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,7 +120,15 @@ public class VolunteerFragment extends Fragment {
 
         listCity = new ArrayList<>();
         listCityName = new ArrayList<>();
+
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            OnGPS();
+        } else {
+            getLocation();
+        }
     }
+
 
     private void getCity(){
         Call<CitiesResponse> getCity = apiInterface.allCities();
@@ -197,7 +219,8 @@ public class VolunteerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()){
-                    postVolunteer();
+                    postVolunteer(String.valueOf(lat), String.valueOf(lng));
+//                    getLocation();
                 }
             }
         });
@@ -372,7 +395,7 @@ public class VolunteerFragment extends Fragment {
         return valid;
     }
 
-    private void postVolunteer(){
+    private void postVolunteer(String latitude, String longitude){
         if (!ever.equalsIgnoreCase("tidak")){
             total = etTotal.getText().toString();
         }
@@ -381,6 +404,8 @@ public class VolunteerFragment extends Fragment {
                 blood,
                 rhesus,
                 idCity,
+                latitude,
+                longitude,
                 gender,
                 etAge.getText().toString(),
                 etWeight.getText().toString(),
@@ -407,5 +432,39 @@ public class VolunteerFragment extends Fragment {
                 snackbar.snackInfo("No Connection");
             }
         });
+    }
+
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (locationGPS != null) {
+                lat = locationGPS.getLatitude();
+                lng = locationGPS.getLongitude();
+//                snackbar.snackSuccess(lat+", "+lng);
+            } else {
+                snackbar.snackError("Failed");
+            }
+        }
     }
 }

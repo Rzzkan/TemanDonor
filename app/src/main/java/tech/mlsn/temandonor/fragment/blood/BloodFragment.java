@@ -1,11 +1,21 @@
 package tech.mlsn.temandonor.fragment.blood;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,12 +59,14 @@ public class BloodFragment extends Fragment {
     ArrayList<String> listCity;
 
     String city="", blood="",covid="tidak";
+    Double lat=0.0, lng=0.0;
 
     SPManager spManager;
     SnackbarHandler snackbar;
     ApiInterface apiInterface;
 
-
+    LocationManager locationManager;
+    private static final int REQUEST_LOCATION = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +75,8 @@ public class BloodFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_blood, container, false);
         initialization(view);
         getCity();
-        getVolunteer();
+        getLocation();
+//        getVolunteer();
         spinnerListener();
         radioListener();
         tabListener();
@@ -92,6 +105,14 @@ public class BloodFragment extends Fragment {
         adapter = new VolunteersAdapter(getContext(), listVolunteerFiltered);
         rvBlood.setAdapter(adapter);
         listCity = new ArrayList<>();
+
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            OnGPS();
+        } else {
+            getLocation();
+        }
+        getVolunteer(String.valueOf(lat),String.valueOf(lng));
 
     }
 
@@ -122,8 +143,11 @@ public class BloodFragment extends Fragment {
 
     }
 
-    private void getVolunteer(){
-        Call<VolunteersResponse> getNews = apiInterface.allVolunteers();
+    private void getVolunteer(String lat, String lng){
+        Call<VolunteersResponse> getNews = apiInterface.allVolunteers(
+                lat,
+                lng
+        );
         getNews.enqueue(new Callback<VolunteersResponse>() {
             @Override
             public void onResponse(Call<VolunteersResponse> call, Response<VolunteersResponse> response) {
@@ -137,6 +161,7 @@ public class BloodFragment extends Fragment {
                                 data.getBlood(),
                                 data.getRhesus(),
                                 data.getCity(),
+                                data.getDistance(),
                                 data.getGender(),
                                 data.getAge(),
                                 data.getWeight(),
@@ -269,6 +294,7 @@ public class BloodFragment extends Fragment {
                     x.getBlood(),
                     x.getRhesus(),
                     x.getCity(),
+                    x.getDistance(),
                     x.getGender(),
                     x.getAge(),
                     x.getWeight(),
@@ -296,6 +322,41 @@ public class BloodFragment extends Fragment {
                 Tools.addFragment(getActivity(), new BloodDetailFragment(), data, "detail-volunteer");
             }
         });
+    }
+
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (locationGPS != null) {
+              lat = locationGPS.getLatitude();
+              lng = locationGPS.getLongitude();
+//                getVolunteer(String.valueOf(lat), String.valueOf(lng));
+//                snackbar.snackSuccess(lat+", "+lng);
+            } else {
+                snackbar.snackError("Failed");
+            }
+        }
     }
 
 }
