@@ -20,6 +20,7 @@ import java.util.List;
 import tech.mlsn.temandonor.R;
 import tech.mlsn.temandonor.network.ApiClient;
 import tech.mlsn.temandonor.response.VolunteersDataResponse;
+import tech.mlsn.temandonor.tools.Tools;
 
 public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<VolunteersDataResponse> items;
@@ -73,7 +74,7 @@ public class VolunteersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             view.name.setText(x.getName());
             view.blood.setText(x.getBlood());
             view.city.setText(x.getCity());
-            view.distance.setText(x.getDistance().toString()+" Km");
+            view.distance.setText(Tools.distanceFormat(x.getDistance().toString()) +" km");
 
             view.lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override

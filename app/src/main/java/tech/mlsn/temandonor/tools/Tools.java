@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,5 +47,11 @@ public class Tools {
             e.printStackTrace();
         }
         return newDate;
+    }
+
+    public static String distanceFormat(String number){
+        double x = Double.valueOf(number);
+        DecimalFormat df = new DecimalFormat("#.##");
+        return df.format(x).toString();
     }
 }

@@ -30,7 +30,7 @@ public class AboutFragment extends Fragment {
         ivBowo = view.findViewById(R.id.ivBowo);
 
         Glide.with(getContext()).load(R.drawable.logo).into(ivLogo);
-        Glide.with(getContext()).load("http://temandonor.rzzkan.com/public/iki/img/blood/rifki.jpg").centerCrop().into(ivRifqi);
-        Glide.with(getContext()).load("http://temandonor.rzzkan.com/public/iki/img/blood/bowo.jpeg").centerCrop().into(ivBowo);
+        Glide.with(getContext()).load("http://temandonor.rzzkan.com/iki/img/blood/IMG_6125.JPG").centerCrop().into(ivRifqi);
+        Glide.with(getContext()).load("http://temandonor.rzzkan.com/iki/img/blood/bowo.jpeg").centerCrop().into(ivBowo);
     }
 }
